@@ -1,0 +1,13 @@
+server:
+  port: 9999
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/rinha
+    username: root
+    password: root
+  flyway:
+    url: jdbc:postgresql://localhost:5433/rinha
+    locations: classpath:db/migration
+    password: root
+    username: root
