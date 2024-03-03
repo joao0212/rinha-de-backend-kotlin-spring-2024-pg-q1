@@ -18,14 +18,14 @@ class ClienteController(
 ) {
 
     @PostMapping("/{id}/transacoes")
-    suspend fun adicionarTransacao(
+    fun adicionarTransacao(
         @PathVariable("id") idCliente: Int,
         @Valid @RequestBody
         transacao: Transacao,
     ): ResponseEntity<TransacaoResponse> {
         return try {
             val cliente = transacaoService.validarTransacao(idCliente, transacao)
-            ResponseEntity(TransacaoResponse(cliente?.limite, cliente?.saldo), HttpStatus.OK)
+            ResponseEntity(TransacaoResponse(cliente.limite, cliente.saldo), HttpStatus.OK)
         } catch (e: TransacaoNaoPermitidaException) {
             ResponseEntity(TransacaoResponse(mensagemErro = "Transação não permitida"), HttpStatus.valueOf(422))
         } catch (e: ClienteNotFoundException) {
@@ -34,7 +34,7 @@ class ClienteController(
     }
 
     @GetMapping("/{id}/extrato")
-    suspend fun buscarExtrato(
+    fun buscarExtrato(
         @PathVariable("id") idCliente: Int,
     ): ResponseEntity<ExtratoResponse> {
         return try {

@@ -6,13 +6,11 @@ create table if not exists cliente (
 );
 
 create table if not exists transacao (
-    id serial,
     valor float,
     tipo varchar(1),
     descricao varchar(10),
-    id_cliente int,
-    realizada_em timestamp,
-    primary key(id)
+    id_cliente  int not null references cliente (id),
+    realizada_em timestamp
 );
 
 insert into cliente(id, limite, saldo) values (1, 100000, 0);
