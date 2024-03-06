@@ -24,8 +24,8 @@ class ClienteController(
         transacao: Transacao,
     ): ResponseEntity<TransacaoResponse> {
         return try {
-            val cliente = transacaoService.validarTransacao(idCliente, transacao)
-            ResponseEntity(TransacaoResponse(cliente.limite, cliente.saldo), HttpStatus.OK)
+            val transacaoReaponse = transacaoService.validarTransacao(idCliente, transacao)
+            ResponseEntity(TransacaoResponse(transacaoReaponse.limite, transacaoReaponse.saldo), HttpStatus.OK)
         } catch (e: TransacaoNaoPermitidaException) {
             ResponseEntity(TransacaoResponse(mensagemErro = "Transação não permitida"), HttpStatus.valueOf(422))
         } catch (e: ClienteNotFoundException) {

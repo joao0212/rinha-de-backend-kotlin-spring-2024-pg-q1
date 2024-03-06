@@ -11,6 +11,3 @@ spring:
     locations: classpath:db/migration
     password: root
     username: root
-  hikari:
-    maximumPoolSize: 30
-

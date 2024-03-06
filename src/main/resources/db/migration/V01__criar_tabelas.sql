@@ -6,6 +6,7 @@ create table if not exists cliente (
 );
 
 create table if not exists transacao (
+    id serial primary key,
     valor float,
     tipo varchar(1),
     descricao varchar(10),

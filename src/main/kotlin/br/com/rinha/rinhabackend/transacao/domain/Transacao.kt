@@ -2,10 +2,14 @@ package br.com.rinha.rinhabackend.transacao.domain
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.validation.constraints.*
+import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import java.sql.Timestamp
 
 data class Transacao(
+    @Id
+    val id: Int,
+
     @get:NotNull
     @get:PositiveOrZero
     @get:Digits(integer = 1000000000, fraction = 0)
