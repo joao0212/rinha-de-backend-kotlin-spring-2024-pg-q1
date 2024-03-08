@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.validation.constraints.*
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
+import org.springframework.data.relational.core.mapping.Table
 import java.sql.Timestamp
 
+@Table
 data class Transacao(
     @Id
     val id: Int,

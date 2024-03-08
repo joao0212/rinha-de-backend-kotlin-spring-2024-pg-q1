@@ -35,7 +35,7 @@ class TransacaoService(
         return TransacaoResponse(cliente.limite, cliente.saldo)
     }
 
-    fun extrato(idCliente: Int): ExtratoResponse {
+    suspend fun extrato(idCliente: Int): ExtratoResponse {
         val cliente = clienteRepository.findById(idCliente).orElseThrow(::ClienteNotFoundException)
         val transacoes = transacaoRepository.findLast10(idCliente).map { transacao -> TransacaoDTO(transacao.valor.toInt(), transacao.tipo, transacao.descricao, transacao.realizadaEm) }
         return if (transacoes.isNotEmpty()) {

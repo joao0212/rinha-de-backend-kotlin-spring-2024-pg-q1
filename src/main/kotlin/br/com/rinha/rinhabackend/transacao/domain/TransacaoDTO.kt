@@ -1,5 +1,6 @@
 package br.com.rinha.rinhabackend.transacao.domain
 
+import java.io.Serializable
 import java.sql.Timestamp
 
 data class TransacaoDTO(
@@ -7,4 +8,4 @@ data class TransacaoDTO(
     val tipo: String,
     val descricao: String,
     val realizadaEm: Timestamp? = null,
-)
+) : Serializable

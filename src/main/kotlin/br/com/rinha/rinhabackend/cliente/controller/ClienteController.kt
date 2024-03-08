@@ -18,7 +18,7 @@ class ClienteController(
 ) {
 
     @PostMapping("/{id}/transacoes")
-    fun adicionarTransacao(
+    suspend fun adicionarTransacao(
         @PathVariable("id") idCliente: Int,
         @Valid @RequestBody
         transacao: Transacao,
@@ -34,7 +34,7 @@ class ClienteController(
     }
 
     @GetMapping("/{id}/extrato")
-    fun buscarExtrato(
+    suspend fun buscarExtrato(
         @PathVariable("id") idCliente: Int,
     ): ResponseEntity<ExtratoResponse> {
         return try {
