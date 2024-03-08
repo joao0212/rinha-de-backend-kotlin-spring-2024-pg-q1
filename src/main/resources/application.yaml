@@ -1,13 +1,8 @@
 server:
-  port: 9999
+  port: ${API_PORT:8080}
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/rinha
-    username: root
-    password: root
-  flyway:
-    url: jdbc:postgresql://localhost:5433/rinha
-    locations: classpath:db/migration
-    password: root
-    username: root
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}/${POSTGRES_DB:rinha}
+    username: ${POSTGRES_USER:root}
+    password: ${POSTGRES_PASSWORD:root}
